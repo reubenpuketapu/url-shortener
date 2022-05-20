@@ -1,0 +1,51 @@
+version: "3.7"
+
+networks:
+  default:
+    name: url-shortener
+
+services:
+  db:
+    image: mongo:4.4
+    container_name: db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+    networks:
+      default:
+        aliases:
+          - db
+  api:
+    container_name: api
+    build:
+      context: api/
+      dockerfile: Dockerfile
+    environment:
+        NODE_ENV: development
+        NODE_PORT: 80
+        DB_USER: 'root'
+        DB_PASSWORD: 'example'
+        DB_URL: mongodb://root:example@db:27017/url-db
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    networks:
+      default:
+        aliases:
+          - api
+  web:
+    container_name: web
+    build:
+      context: web/
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      default:
+        aliases:
+          - web
+    depends_on:
+      - api
+ 

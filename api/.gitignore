@@ -1,0 +1,11 @@
+dist/
+node_modules/
+coverage/
+test/output/
+
+.eslintcache
+
+junit.xml
+ts-jest.log
+
+yarn-error.log
