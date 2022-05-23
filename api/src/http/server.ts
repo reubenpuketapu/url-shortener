@@ -11,6 +11,12 @@ const options: cors.CorsOptions = {
 
 server.use(cors(options));
 
+// This needs to be removed in a production env
+server.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', req.header('origin') );
+  next();
+});
+
 server.use(express.json());
 
 server.use(function (req, res, next) {

@@ -12,13 +12,14 @@
 
 
 ## Scope complete
-- All apart from `The app layout should be responsive. (This wasn't really attemped )`
-- You can add a new url using the input field and then it will be displayed above the input field
+- All apart from `The app layout should be responsive. This wasn't fully complete`
+- You can add a new url using the input field and then it will be displayed above the input field and persisted to MongoDb
 
 ## How to run
 
 - `make run` to start the full application running in docker containers. Access http://localhost:3000 for the UI.
 - `make test-api` to run the test suite against the api
+- `make test-web` to run the test suite against the web app + api
 
 ## Discussion
 
@@ -28,3 +29,9 @@ Assumptions:
 
 Shortcuts:
 - not much in terms of frontend design, I struggle to design things without any inspiration / design proposals
+- no retries in failures / error handling if non-success codes for requests to the backend
+- should use env variable for api url, just passed as prop for now
+- frontend code is pretty small and quickly put together as there is such low functionality
+- CORS setup to allow any origin at the moment (that should be removed)
+- no error handling in the backend for failures to the db
+- if the app loses connection to the db, there's no retries to reconnect
