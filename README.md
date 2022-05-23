@@ -37,3 +37,4 @@ Shortcuts:
 - CORS setup to allow any origin at the moment (that should be removed)
 - no error handling in the backend for failures to the db
 - if the app loses connection to the db, there's no retries to reconnect
+- uniqueness of shorted url is only enforced by the db and the backend could have a collision (no retries)
