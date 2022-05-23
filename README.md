@@ -21,6 +21,8 @@
 - `make test-api` to run the test suite against the api
 - `make test-web` to run the test suite against the web app + api
 
+n.b. feature tests for both api + web will only pass when run using docker-compose. `yarn test` in each project will throw exceptions for feature tests because the integrations aren't mocked.
+
 ## Discussion
 
 Assumptions:
